@@ -188,6 +188,83 @@ nmap 10.10.20.2 -p 21 --script ftp-anon
 ```
 #### /SSH:
 
+```
+nmap 10.10.20.3 -p 22 --script ssh2-enum-algos
+```
+```
+nmap 10.10.20.3 -p 22 --script ssh-hostkey --script-args ssh_hostkey=full
+```
+```
+nmap 10.10.20.3 -p 22 --script ssh-auth-methods --script-args="ssh.user=student"
+```
+Hydra:
+```
+gzip -d /usr/share/wordlists/rockyou.txt.gz
+```
+```
+hydra -l admin -P /usr/share/wordlists/rockyou.txt 10.10.20.3 ssh
+```
+Metasploit:
+```
+use auxiliary/scanner/ssh/ssh_login
+```
+#### /HTTP:
+
+```
+nmap 10.10.20.3 -sV -p 80 --script http-enum
+```
+```
+nmap 10.10.20.3 -sV -p 80 --script http-headers
+```
+```
+nmap 10.10.20.3 -sV -p 80 --script http-methods --script-args http-methods.url-path=/webdav/
+```
+```
+nmap 10.10.20.3 -sV -p 80 --script http-webdav-scan --script-args http-methods.url-path=/webdav/
+```
+```
+nmap 10.10.20.3 -sV -p 80 -script banner
+```
+Metasploit:
+```
+use auxiliary/scanner/http/http_version
+```
+```
+use auxiliary/scanner/http/brute_dirs
+```
+```
+use auxiliary/scanner/http/robots_txt
+```
+curl:
+```
+curl 10.10.20.3 | more
+```
+Wget:
+```
+wget "http://10.10.20.3/index"
+```
+```
+brows --startup-url 10.10.20.3
+```
+```
+lynx http://10.10.20.3
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
