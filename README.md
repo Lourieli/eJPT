@@ -2,9 +2,6 @@
 # All needed commands and sources for eJPT
 
 
-```
-fping -a -g 10.10.10.0/24 2> fping.txt
-```
 # Information Gathering:
 ## Passive Information Gathering:
 https://hackersploit.org/
@@ -321,7 +318,7 @@ hydra -l root -P /usr/share/metasploit-framework/data/wordlists/unix_passwords.t
 ```
 
 
-
+# Host & Network Pentesting: System/Host Based Attacks:
 
 
 
