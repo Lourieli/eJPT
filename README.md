@@ -146,6 +146,12 @@ use auxiliary/scanner/smb/smb2
 ```
 use auxiliary/scanner/smb/smb_enumshares
 ```
+```
+use auxiliary/scanner/smb/smb_login
+```
+```
+use auxiliary/scanner/smb/pipe_auditor
+```
 nmblookup:
 ```
 nmblookup -A 10.10.20.2
@@ -162,9 +168,25 @@ enum4linux:
 ```
 enum4linux -o 10.10.20.3
 ```
+Hydra:
+```
+gzip -d /usr/share/wordlists/rockyou.txt.gz
+```
+```
+hydra -l admin -P /usr/share/wordlists/rockyou.txt 10.10.20.3 smb
+```
+SMBmP:
+```
+SMBMAP -H 10.10.20.2 -u admin -p admin
+```
+#### /FTP:
 
-
-
+```
+nmap 10.10.20.2 -p 21 --script ftp-anon
+```
+```ftp 10.10.20.3
+```
+#### /SSH:
 
 
 
