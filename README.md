@@ -181,7 +181,8 @@ SMBMAP -H 10.10.20.2 -u admin -p admin
 ```
 nmap 10.10.20.2 -p 21 --script ftp-anon
 ```
-```ftp 10.10.20.3
+```
+ftp 10.10.20.3
 ```
 #### /SSH:
 
